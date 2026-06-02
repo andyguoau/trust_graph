@@ -1,0 +1,109 @@
+/* x.com has very aggressive CSS — every property must be !important
+   to win against its `color: rgb(...)` inline styles and font overrides. */
+
+.tg-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  flex-shrink: 0 !important;
+  gap: 3px !important;
+  padding: 2px 8px !important;
+  margin: 0 0 0 6px !important;
+  border-radius: 9px !important;
+  font-family: -apple-system, "SF Pro Text", system-ui, "Segoe UI", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  vertical-align: middle !important;
+  border: 1px solid transparent !important;
+  user-select: none !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  min-width: 18px !important;
+  min-height: 20px !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  top: 0 !important;
+  float: none !important;
+  clear: none !important;
+}
+.tg-badge:hover { filter: brightness(1.1) !important; }
+
+.tg-badge.tg-trust      { background: #117a3a !important; color: #fff !important; }
+.tg-badge.tg-scammer    { background: #b00020 !important; color: #fff !important; }
+.tg-badge.tg-suspect    { background: #d97706 !important; color: #fff !important; }
+.tg-badge.tg-propaganda { background: #7c3aed !important; color: #fff !important; }
+.tg-badge.tg-idiot      { background: #ec4899 !important; color: #fff !important; }
+.tg-badge.tg-unknown    { background: #444c5a !important; color: #fff !important; }
+.tg-badge.tg-loading    { background: #999    !important; color: #fff !important; }
+.tg-badge.tg-error      { background: #b00020 !important; color: #fff !important; border-style: dashed !important; }
+
+/* Force the inner text span too in case x.com targets descendants. */
+.tg-badge > span {
+  color: inherit !important;
+  font: inherit !important;
+  display: inline !important;
+}
+
+/* Popup that appears under a badge */
+.tg-popup {
+  position: absolute !important;
+  z-index: 999999 !important;
+  background: #fff !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
+  padding: 10px !important;
+  width: min(340px, calc(100vw - 24px)) !important;
+  font-family: -apple-system, system-ui, sans-serif !important;
+  font-size: 13px !important;
+  color: #111 !important;
+}
+.tg-popup * { box-sizing: border-box; }
+.tg-popup .tg-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 8px !important;
+}
+.tg-popup .tg-handle  { color: #5a6473 !important; font-size: 12px !important; flex: 1 !important; }
+.tg-popup .tg-own-tag {
+  background: #eef2ff !important; color: #4338ca !important;
+  font-size: 10px !important; font-weight: 700 !important;
+  padding: 2px 6px !important; border-radius: 4px !important;
+}
+.tg-popup .tg-lang-toggle {
+  background: #f3f4f6 !important; color: #111 !important;
+  font-size: 11px !important; font-weight: 700 !important;
+  padding: 2px 8px !important; border-radius: 4px !important;
+  cursor: pointer !important; user-select: none !important;
+  border: 1px solid #d1d5db !important;
+}
+.tg-popup .tg-lang-toggle:hover { background: #e5e7eb !important; }
+.tg-popup .tg-actions { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 7px !important; }
+.tg-popup button {
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 7px 8px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  overflow-wrap: anywhere !important;
+  min-height: 34px !important;
+  min-width: 0 !important;
+}
+.tg-popup .btn-trust      { background: #117a3a !important; color: #fff !important; }
+.tg-popup .btn-scammer    { background: #b00020 !important; color: #fff !important; }
+.tg-popup .btn-suspect    { background: #d97706 !important; color: #fff !important; }
+.tg-popup .btn-propaganda { background: #7c3aed !important; color: #fff !important; }
+.tg-popup .btn-idiot      { background: #ec4899 !important; color: #fff !important; }
+.tg-popup .btn-neutral    { background: #6b7280 !important; color: #fff !important; }
+.tg-popup .btn-clear      { background: #eceff3 !important; color: #111 !important; }
+.tg-popup .tg-foot     { margin-top: 8px !important; font-size: 10px !important; color: #8a93a3 !important; text-align: right !important; }

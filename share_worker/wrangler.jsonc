@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "xtag-share",
+  "main": "src/index.js",
+  "compatibility_date": "2026-05-16",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SHARES",
+      "id": "<KV_NAMESPACE_ID>"
+    }
+  ]
+}

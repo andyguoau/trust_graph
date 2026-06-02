@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; width: 320px; padding: 12px; margin: 0; color: #111; }
+    h1 { font-size: 14px; margin: 0 0 8px; }
+    .row { display: flex; justify-content: space-between; padding: 2px 0; font-size: 12px; }
+    .ok  { color: #117a3a; }
+    .err { color: #b00020; }
+    a { color: #1d9bf0; text-decoration: none; font-size: 12px; }
+    code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+    .panel { border-top: 1px solid #e5e7eb; margin-top: 10px; padding-top: 10px; }
+    h2 { font-size: 12px; margin: 0 0 6px; }
+    label { display: block; margin: 7px 0 3px; font-size: 11px; color: #5a6473; }
+    input, select { width: 100%; box-sizing: border-box; border: 1px solid #d1d5db; border-radius: 5px; padding: 6px; font-size: 12px; background: #fff; }
+    button { width: 100%; margin-top: 8px; border: 0; border-radius: 6px; background: #111827; color: white; padding: 8px; font-weight: 700; cursor: pointer; }
+    button:disabled { background: #9ca3af; cursor: default; }
+    .button-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .danger { background: #b00020; }
+    .secondary { background: #4b5563; }
+    textarea { width: 100%; box-sizing: border-box; min-height: 58px; margin-top: 8px; border: 1px solid #d1d5db; border-radius: 5px; padding: 6px; font-size: 11px; resize: vertical; }
+    .hint { margin-top: 6px; font-size: 11px; color: #5a6473; }
+    .source-list { max-height: 150px; overflow: auto; border: 1px solid #e5e7eb; border-radius: 6px; }
+    .source-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 7px; border-bottom: 1px solid #eef0f3; }
+    .source-row:last-child { border-bottom: 0; }
+    .source-main { min-width: 0; }
+    .source-name { font-size: 12px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .source-meta { font-size: 10px; color: #6b7280; margin-top: 2px; }
+    .source-row button { margin: 0; padding: 6px 8px; font-size: 11px; width: auto; }
+  </style>
+</head>
+<body>
+  <h1>Xtag</h1>
+  <div id="status" class="row">读取本地标签 …</div>
+  <div id="counts"></div>
+  <div class="panel">
+    <h2>编辑标签</h2>
+    <label for="editHandle">账号 handle</label>
+    <input id="editHandle" placeholder="elonmusk">
+    <label for="editLabel">标签</label>
+    <select id="editLabel">
+      <option value="trust">信任</option>
+      <option value="scammer">骗子</option>
+      <option value="suspect">怀疑</option>
+      <option value="propaganda">大外宣</option>
+      <option value="idiot">脑残</option>
+      <option value="neutral">中立</option>
+    </select>
+    <div class="button-row">
+      <button id="saveLabel">保存/更新</button>
+      <button id="deleteLabel" class="danger">删除标签</button>
+    </div>
+    <div id="editStatus" class="hint"></div>
+  </div>
+  <div class="panel">
+    <h2>来源管理</h2>
+    <div id="sourceList" class="source-list"></div>
+    <div id="sourceStatus" class="hint"></div>
+  </div>
+  <div class="panel">
+    <h2>分享</h2>
+    <label for="shareBackend">分享后台地址</label>
+    <input id="shareBackend" placeholder="https://your-xtag-share-worker.example">
+    <label for="author">分享者名称</label>
+    <input id="author" placeholder="alice">
+    <button id="publish">发布我的标签短链接</button>
+    <div id="shareStatus" class="hint"></div>
+    <textarea id="shareLink" readonly placeholder="生成后会显示分享链接"></textarea>
+  </div>
+  <div class="panel">
+    <h2>导入</h2>
+    <textarea id="importLink" placeholder="粘贴别人发来的 /s/... 分享链接"></textarea>
+    <label style="display:flex; gap:6px; align-items:center; margin-top:6px;">
+      <input id="allowConflicts" type="checkbox" style="width:auto;"> 覆盖冲突标签
+    </label>
+    <div class="button-row">
+      <button id="previewImport">预览分享</button>
+      <button id="mergeImport">合并导入</button>
+    </div>
+    <div id="importStatus" class="hint"></div>
+  </div>
+  <p style="margin-top:10px; font-size:11px; color:#5a6473;">
+    打开 x.com 后，每个作者旁边会显示本地标签小贴。点击贴纸即可打标签。
+  </p>
+  <script src="popup.js"></script>
+</body>
+</html>
