@@ -2,7 +2,7 @@ const SHARE_KIND = "trust_graph_labels";
 const SHARE_VERSION = 1;
 const MAX_BODY_BYTES = 900_000;
 const MAX_LABELS = 20_000;
-const MAX_PUBLIC_WRITES_PER_HOUR = 30;
+const MAX_PUBLIC_WRITES_PER_HOUR = 1;
 const LABEL_KEYS = new Set(["trust", "scammer", "suspect", "propaganda", "idiot", "neutral"]);
 
 function jsonResponse(body, status = 200, extraHeaders = {}) {

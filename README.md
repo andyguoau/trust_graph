@@ -41,7 +41,7 @@ The popup can publish your current local label snapshot to an HTTPS share backen
 
 The public link only points to the snapshot. Anyone with the link can view the shared label data.
 
-The bundled share Worker allows public publishing by default and applies a small per-IP write limit. For private deployments, set `PUBLISH_TOKEN` on the Worker and do not ship that token in the extension package.
+The bundled share Worker allows public publishing by default and limits each IP to one publish per hour. For private deployments, set `PUBLISH_TOKEN` on the Worker and do not ship that token in the extension package.
 
 ## Import Labels
 
