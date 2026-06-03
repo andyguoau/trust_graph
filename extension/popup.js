@@ -1,6 +1,7 @@
 const LABELS_KEY = "tg_labels_v1";
 const AUTHOR_KEY = "tg_author";
 const SHARE_BACKEND_KEY = "tg_share_backend";
+const DEFAULT_SHARE_BACKEND = "https://xtag-share.andyguoau.workers.dev";
 
 const LABEL_TEXT = {
   trust: "信任",
@@ -248,7 +249,7 @@ function renderSourceList(labels) {
 async function loadSettings() {
   const data = await storageGet([AUTHOR_KEY, SHARE_BACKEND_KEY]);
   if (data[AUTHOR_KEY]) document.getElementById("author").value = data[AUTHOR_KEY];
-  if (data[SHARE_BACKEND_KEY]) document.getElementById("shareBackend").value = data[SHARE_BACKEND_KEY];
+  document.getElementById("shareBackend").value = data[SHARE_BACKEND_KEY] || DEFAULT_SHARE_BACKEND;
 }
 
 async function saveSettings() {

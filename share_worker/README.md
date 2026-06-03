@@ -27,4 +27,4 @@ Optional private publishing:
 npx wrangler secret put PUBLISH_TOKEN
 ```
 
-If `PUBLISH_TOKEN` is not set, anyone can publish snapshots to the Worker. Use Cloudflare rate limiting if the endpoint is public.
+If `PUBLISH_TOKEN` is not set, anyone can publish snapshots to the Worker. The Worker applies a small per-IP write limit, but a public endpoint should still be watched for abuse.

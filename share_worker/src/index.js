@@ -2,6 +2,7 @@ const SHARE_KIND = "trust_graph_labels";
 const SHARE_VERSION = 1;
 const MAX_BODY_BYTES = 900_000;
 const MAX_LABELS = 20_000;
+const MAX_PUBLIC_WRITES_PER_HOUR = 30;
 const LABEL_KEYS = new Set(["trust", "scammer", "suspect", "propaganda", "idiot", "neutral"]);
 
 function jsonResponse(body, status = 200, extraHeaders = {}) {
@@ -56,6 +57,21 @@ function validatePublishToken(request, env) {
   return bearer === env.PUBLISH_TOKEN || explicit === env.PUBLISH_TOKEN;
 }
 
+async function rateLimitPublicPublish(request, env) {
+  if (env.PUBLISH_TOKEN) return null;
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const hour = Math.floor(Date.now() / 3_600_000);
+  const key = `rate:publish:${ip}:${hour}`;
+  const current = Number(await env.SHARES.get(key)) || 0;
+  if (current >= MAX_PUBLIC_WRITES_PER_HOUR) {
+    return jsonResponse({ detail: "publish rate limit exceeded" }, 429, {
+      "Retry-After": "3600",
+    });
+  }
+  await env.SHARES.put(key, String(current + 1), { expirationTtl: 7200 });
+  return null;
+}
+
 async function readJson(request) {
   const length = Number(request.headers.get("Content-Length") || 0);
   if (length > MAX_BODY_BYTES) {
@@ -94,6 +110,8 @@ async function createShare(request, env) {
   if (!validatePublishToken(request, env)) {
     return jsonResponse({ detail: "missing or invalid publish token" }, 401);
   }
+  const rateLimited = await rateLimitPublicPublish(request, env);
+  if (rateLimited) return rateLimited;
 
   let body;
   try {
