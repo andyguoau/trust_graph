@@ -3,6 +3,14 @@
   "name": "xtag-share",
   "main": "src/index.js",
   "compatibility_date": "2026-05-16",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "xtag.elevenlabs.cc",
+      "custom_domain": true
+    }
+  ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1

@@ -2,6 +2,8 @@
 
 Minimal Cloudflare Worker + KV backend for Xtag share links.
 
+Production backend: `https://xtag.elevenlabs.cc`
+
 It stores label snapshots and serves:
 
 - `POST /api/shares`

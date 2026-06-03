@@ -1,7 +1,7 @@
 const LABELS_KEY = "tg_labels_v1";
 const AUTHOR_KEY = "tg_author";
 const SHARE_BACKEND_KEY = "tg_share_backend";
-const DEFAULT_SHARE_BACKEND = "https://xtag-share.andyguoau.workers.dev";
+const DEFAULT_SHARE_BACKEND = "https://xtag.elevenlabs.cc";
 
 const LABEL_TEXT = {
   trust: "信任",
