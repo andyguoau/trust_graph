@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Xtag",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Show and edit your own local account labels on X. Labels are stored in Chrome local storage.",
   "permissions": ["storage"],
   "host_permissions": [

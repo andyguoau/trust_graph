@@ -38,5 +38,5 @@ No user data is sold. The extension does not load or execute remotely hosted cod
 node --check extension/content.js
 node --check extension/popup.js
 ./scripts/package_extension.sh
-unzip -l dist/xtag-extension-v0.1.0.zip
+unzip -l dist/xtag-extension-v0.1.1.zip
 ```
